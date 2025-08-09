@@ -39,8 +39,9 @@
           <li><a href="#benefiti">Benefiti</a></li>
           <li><a href="#cenovnik">Cenovnik</a></li>
           <li><a href="#cesta-pitanja">Česta Pitanja</a></li>
-          <li><a href="#login">Login</a></li>
-          <li><a href="#registruj-se">Registruj se</a></li>
+          <li><span class="drop-donw-devider"></span></li>          
+          <li><a class="drop-down-login" href="#login">Login</a></li>
+          <li><a class="drop-down-register" href="#registruj-se">Registruj se</a></li>
         </ul>
       </li>
     </ul>
@@ -126,6 +127,59 @@
 
       .burger-icon {
         display: none;
+      }
+
+      .dropdown-menu-container {
+        width: 100%;
+        position: absolute;
+        top: 100px;
+        left: 0px;
+
+        .dropdown-menu {
+          padding: 1.5rem;
+          list-style: none;
+          background: var(--Dark-blue, #0E1F34);
+          li {
+            width: 100%;
+            text-align: center;
+            a {
+              display: block;
+              padding: 0.938rem 0;
+              color: var(--White, #FFF);
+              text-align: center;
+              font-family: "Red Hat Display";
+              font-size: 1.125rem;
+              font-style: normal;
+              font-weight: 600;
+              line-height: normal;
+              text-decoration: none;
+              transition: color 0.3s ease;
+
+              &:hover {
+                color: var(--Blue---Main-Color, #0084FF);
+              }
+            }
+            .drop-down-login, .drop-down-register {
+              &:hover {
+                color: var(--Blue---Main-Color, #0084FF);
+                &::before {
+                  width: 0%;
+                }
+              }
+            }
+            .drop-down-register {
+              display: block;
+              width: 100%;
+              border-radius: 4px;
+              border: 1px solid var(--Blue---Main-Color, #0084FF);
+            }
+            .drop-donw-devider {
+              width: 100%;
+              height: 1px;
+              background: var(--stroke, #1E2E45);
+            }
+          }
+        }
       }
     }
     @media (max-width: 1280px) {
