@@ -5,6 +5,8 @@
   import HeroSection from '@/components/sections/home/HeroSection.vue';
   import SubHeroContent from '@/components/sections/home/SubHeroContent.vue';
   import WhySection from '@/components/sections/home/WhySection.vue';
+  import WhatWeOfferSection from '@/components/sections/home/WhatWeOfferSection.vue';
+  import BenefitsSection from '@/components/sections/home/BenefitsSection.vue';
 
 
 
@@ -17,9 +19,8 @@
       <HeroSection />
       <SubHeroContent />
       <WhySection />
-
-
-
+      <WhatWeOfferSection />
+      <BenefitsSection />
     </main>
   <Footer />
 </template>

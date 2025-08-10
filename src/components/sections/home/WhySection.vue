@@ -1,12 +1,12 @@
 <script setup>
-
+  import LabelComponet from '@/components/sections/home/partials/LabelComponet.vue';
 </script>
 
 <template>
   <section class="why-section">
     <div class="why-section-holder container">
       <article class="why-single-card">
-        <p class="why-card-label">Problemi</p>
+        <LabelComponet label="Problemi" />
         <h3 class="why-card-title">Zašto univerzalna rešenja NE funkcionišu?</h3>
         <p class="why-card-description">Zato što svako preduzeće ima jedinstvene potrebe i izazove.</p>
         <ul class="why-card-list">
@@ -34,8 +34,8 @@
         </ul>
       </article>
 
-            <article class="why-single-card">
-        <p class="why-card-label">Rešenja</p>
+        <article class="why-single-card">
+        <LabelComponet label="Rešenja" />
         <h3 class="why-card-title">Kako nasa aplikacija i menja pravila igre</h3>
         <p class="why-card-description">MaliBizApp je jednostavno, prilagođeno rešenje koje sadrži samo ono što vam je zaista potrebno — ništa više, ništa manje.</p>
         <ul class="why-card-list">
@@ -93,16 +93,6 @@
         flex: 1 0 48%;
         border-radius: 4px;
         background: var(--Dark, #0D1B2E);
-        .why-card-label {
-          display: inline-block;
-          padding: 12px 16px;
-          border-radius: 8px;
-          border: 1px solid var(--Green, #0AF89D);        
-          color: var(--White, #FFF);
-
-          font-size: 20px;
-          font-weight: 600;
-        }
         .why-card-title {
           margin: 24px 0px;
           font-size: 32px;
