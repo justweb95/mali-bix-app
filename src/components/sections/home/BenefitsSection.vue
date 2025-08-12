@@ -1,5 +1,6 @@
 <script setup>
-  import LabelComponent from '@/components/sections/home/partials/LabelComponet.vue';
+  import LabelComponent from '@/components/sections/home/partials/LabelComponent.vue';
+
 
 </script>
 

@@ -1,12 +1,13 @@
 <script setup>
-  import LabelComponet from '@/components/sections/home/partials/LabelComponet.vue';
+  import LabelComponent from '@/components/sections/home/partials/LabelComponent.vue';
+
 </script>
 
 <template>
   <section class="why-section">
     <div class="why-section-holder container">
       <article class="why-single-card">
-        <LabelComponet label="Problemi" />
+        <LabelComponent label="Problemi" />
         <h3 class="why-card-title">Zašto univerzalna rešenja NE funkcionišu?</h3>
         <p class="why-card-description">Zato što svako preduzeće ima jedinstvene potrebe i izazove.</p>
         <ul class="why-card-list">
@@ -35,7 +36,7 @@
       </article>
 
         <article class="why-single-card">
-        <LabelComponet label="Rešenja" />
+        <LabelComponent label="Rešenja" />
         <h3 class="why-card-title">Kako nasa aplikacija i menja pravila igre</h3>
         <p class="why-card-description">MaliBizApp je jednostavno, prilagođeno rešenje koje sadrži samo ono što vam je zaista potrebno — ništa više, ništa manje.</p>
         <ul class="why-card-list">

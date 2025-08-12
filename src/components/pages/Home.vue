@@ -7,7 +7,7 @@
   import WhySection from '@/components/sections/home/WhySection.vue';
   import WhatWeOfferSection from '@/components/sections/home/WhatWeOfferSection.vue';
   import BenefitsSection from '@/components/sections/home/BenefitsSection.vue';
-
+  import PriceSection from '@/components/sections/home/PriceSection.vue';
 
 
 
@@ -21,6 +21,9 @@
       <WhySection />
       <WhatWeOfferSection />
       <BenefitsSection />
+      <PriceSection />
+    
+    
     </main>
   <Footer />
 </template>

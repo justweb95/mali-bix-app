@@ -2,7 +2,7 @@
   // Imports
   import { ref } from 'vue';
   // Components
-  import LabelComponent from '@/components/sections/home/partials/LabelComponet.vue';
+  import LabelComponent from '@/components/sections/home/partials/LabelComponent.vue';
   // Images
   import wwe_image_1 from '@images/home/what-we-offer-1.webp';
   import wwe_image_2 from '@images/home/what-we-offer-2.webp';
