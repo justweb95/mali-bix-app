@@ -1,11 +1,18 @@
 <script setup lang="ts">
-  import { ref } from 'vue';
+  import { ref, watch } from 'vue';
   const isMenuOpen = ref<boolean>(false);
 
   const toggleMenu = (): void => {
     isMenuOpen.value = !isMenuOpen.value;
-    console.log(`Menu is now ${isMenuOpen.value ? 'open' : 'closed'}`);
   };
+
+  watch(isMenuOpen, (open) => {
+    if (open) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+  });
 </script>
 
 <template>
@@ -33,15 +40,15 @@
           <path d="M28 12L12 28" stroke="white" stroke-width="2"/>
         </svg>
       </li>
-      <li class="dropdown-menu-container" v-if="isMenuOpen">
+      <li :class="{'dropdown-menu-container': true, 'open': isMenuOpen}" >
         <ul class="dropdown-menu">
-          <li><a href="/">Početak</a></li>
-          <li><a href="#benefiti">Benefiti</a></li>
-          <li><a href="#cenovnik">Cenovnik</a></li>
-          <li><a href="#cesta-pitanja">Česta Pitanja</a></li>
-          <li><span class="drop-donw-devider"></span></li>          
-          <li><a class="drop-down-login" href="#login">Login</a></li>
-          <li><a class="drop-down-register" href="#registruj-se">Registruj se</a></li>
+          <li @click="toggleMenu"><a href="/">Početak</a></li>
+          <li @click="toggleMenu"><a href="#benefiti">Benefiti</a></li>
+          <li @click="toggleMenu"><a href="#cenovnik">Cenovnik</a></li>
+          <li @click="toggleMenu"><a href="#cesta-pitanja">Česta Pitanja</a></li>
+          <li><span class="drop-donw-devider"></span></li>
+          <li @click="toggleMenu"><a class="drop-down-login" href="#login">Login</a></li>
+          <li @click="toggleMenu"><a class="drop-down-register" href="#registruj-se">Registruj se</a></li>
         </ul>
       </li>
     </ul>
@@ -127,6 +134,14 @@
 
       .burger-icon {
         display: none;
+        &:hover {
+          cursor: pointer;
+        }
+      }
+
+      .dropdown-menu-container.open {
+        transform: translateY(0); /* dolazi na svoje mesto */
+        opacity: 1;
       }
 
       .dropdown-menu-container {
@@ -134,6 +149,15 @@
         position: absolute;
         top: 100px;
         left: 0px;
+        height: 100svh;
+        z-index: 2;
+        background: rgba(0, 0, 0, 0.5);
+        backdrop-filter: blur(8px); 
+        -webkit-backdrop-filter: blur(8px);
+
+        transform: translateY(calc(-100svh - 100px));
+        transition: transform 0.3s ease, opacity 0.3s ease;
+        opacity: 0; /* start transparent */
 
         .dropdown-menu {
           padding: 1.5rem;
