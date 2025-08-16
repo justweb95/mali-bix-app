@@ -18,7 +18,13 @@
     border: 1px solid var(--Green, #0AF89D);        
     color: var(--White, #FFF);
 
-    font-size: 20px;
+    font-size: 1.25rem;
     font-weight: 600;
+
+    @media (max-width: 550px) {
+      font-size: 1rem;
+      padding: 6px 16px;
+      
+    }
   }
 </style>

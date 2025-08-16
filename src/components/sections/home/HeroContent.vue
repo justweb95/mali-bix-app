@@ -98,4 +98,28 @@
     letter-spacing: 0.8px;
     text-decoration: none;
   }
+
+  @media (max-width: 550px) {
+    .hero-label {
+      padding: 6px 16px;
+      .hero-new-label {
+        display: none;
+      }
+    }
+
+    h1 {
+      font-size: 2rem;
+      margin: 16px 0;
+    }
+
+    .hero-text-info {
+      font-size: 1.125rem;
+    }
+
+    .hero-cta {
+      margin: 32px auto 40px;
+      font-size: 1.125rem;
+    }
+  }
+
 </style>

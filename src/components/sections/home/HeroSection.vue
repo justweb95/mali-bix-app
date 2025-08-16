@@ -19,5 +19,8 @@
   .hero-section {
     padding: 60px 0px;
     background: var(--Dark, #0D1B2E);
+    @media (max-width: 550px) {
+      padding: 40px 0;
+    }
   }
 </style>

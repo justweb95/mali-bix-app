@@ -122,5 +122,44 @@
         }
       }
     }
+    @media (max-width: 768px) {
+      .why-section-holder {
+        flex-wrap: wrap;
+        .why-single-card {
+          flex: 1 0 100%;
+        }
+      }
+    }
+    @media (max-width: 550px) {
+      padding: 40px 0px;
+      .why-section-holder {
+        padding: 12px;
+        flex-wrap: wrap;
+        gap: 12px;
+        .why-single-card {
+          flex: 1 0 100%;
+          padding: 20px;
+          .why-card-title {
+            margin: 16px 0px;
+            font-size: 1.25rem;
+          }
+          .why-card-description {
+            font-size: 0.875rem;
+          }
+          .why-card-list {
+            margin-top: 20px;
+            li {
+              align-items: flex-start;
+              svg {
+                margin-top: 6px;
+              }
+              span {
+                font-size: 1rem;
+              }
+            }
+          }
+        }
+      }
+    }
   }
 </style>

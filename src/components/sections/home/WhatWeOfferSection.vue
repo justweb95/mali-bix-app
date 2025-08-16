@@ -193,6 +193,53 @@
         }
       }
     }
+    @media (max-width: 1024px) {
+      .what-we-offer-container {
+        flex-wrap: wrap;
+        .wwe-content-holder {
+          flex: 1 0 100%;
+        }
+        .wwe-image-holder {
+          img {
+            margin: 0px auto;
+          }
+        }
+      }
+    }
+    @media (max-width: 550px) {
+      padding: 40px 0px;
+      .what-we-offer-container {
+        gap: 32px;
+        .wwe-content-holder {
+          .wwe-title {
+            margin: 20px 0px;
+            font-size: 2rem;
+          }
+          .wwe-drop-down-list {
+            min-height: 290px;
+            .wwe-drop-down-item {
+              padding: 20px 0px;
+              max-height: 72px;
+              .wwe-drop-down-item-heading {
+                p {
+                  font-size: 1.25rem;
+                }
+              }
+              .wwe-drop-down-content {
+                font-size: 1rem;
+              }
+            }
+          }
+        }
+        .wwe-image-holder {
+          height: 417px;
+          img {
+            object-fit: cover;
+            margin: 0px auto;
+          }
+        }
+      }
+    }
   }
 
 .wwe-drop-down-item-open {

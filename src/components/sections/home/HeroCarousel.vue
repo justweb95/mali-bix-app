@@ -58,6 +58,16 @@ import logo5 from '@images/home/klijent-5.svg'
   flex-shrink: 0; /* prevent shrinking */
 }
 
+@media (max-width: 550px) {
+  .hero-carousel-holder {
+    img {
+      height: auto;
+      max-width: 170px;
+      margin-right: 24px;
+    }
+  }
+}
+
 @keyframes scrollLeft {
   0% {
     transform: translateX(0);

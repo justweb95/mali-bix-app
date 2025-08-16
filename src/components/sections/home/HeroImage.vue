@@ -32,6 +32,12 @@ import heroImage from '@images/home/hero-image.webp';
       animation-fill-mode: forwards;
       animation-timing-function: linear;
     }
+    @media (max-width: 550px) {
+      margin: 48px auto 40px;
+      .hero-image {
+        width: 100%;
+      }
+    }
   }
 
   

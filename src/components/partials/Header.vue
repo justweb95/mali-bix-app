@@ -192,5 +192,20 @@
         }
       }
     }
+    @media (max-width: 550px) {
+      padding: 1.25rem 0;
+      .nav-list {
+        .header-logo {
+          max-width: 240px;
+          img {
+            display: block;
+            max-width: 100%;
+          }
+        }
+        .dropdown-menu-container {
+          top: 85px;
+        }
+      }
+    }
   }
 </style>

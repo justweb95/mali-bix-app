@@ -5,7 +5,7 @@
 </script>
 
 <template>
-  <section class="benefits">
+  <section id="benefiti" class="benefits">
     <div class="benefits-container container">
       <LabelComponent label="Benefiti" />
       <h3 class="benefits-title">Zašto izabrati MaliBizApp?</h3>
@@ -92,7 +92,7 @@
       .benefits-card-list {
         margin: 60px 0px 0px 0px;
         display: flex;
-        align-items: center;
+        align-items: stretch;
         justify-content: center;
         flex-wrap: wrap;
         gap: 20px;
@@ -103,6 +103,7 @@
           padding: 2rem;
           border-radius: 8px;
           background: var(--Dark-blue, #0E1F34);
+          transition: .3s ease-in-out;
           .benefits-card-icon {
             display: block;
             width: max-content;
@@ -124,9 +125,45 @@
             font-weight: 400;
             line-height: 150%; /* 27px */
           }
+          &:hover {
+            transform: scale(1.05);
+          }
         }
       }
     }
-
+    @media (max-width: 768px) {
+      .benefits-container {
+        .benefits-card-list {
+          .benefits-card {
+            flex: 0 0 48%;
+          }
+        }
+      }
+    }
+    @media (max-width: 550px) {
+      padding: 40px 0px;
+      .benefits-container {
+        .benefits-title {
+          margin: 20px 0px;
+          font-size: 2rem;
+        }
+        .benefits-text {
+          font-size: 1rem;
+        }
+        .benefits-card-list {
+          margin: 32px 0px 0px 0px;
+          .benefits-card {
+            padding: 2rem 1.5rem;
+            flex: 1 0 100%;
+            .benefits-card-title {
+              font-size: 1.25rem;
+            }
+            .benefits-card-text {
+              font-size: 1rem;
+            }
+          }
+        }
+      }
+    }
   }
 </style>

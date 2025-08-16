@@ -8,8 +8,8 @@
   import WhatWeOfferSection from '@/components/sections/home/WhatWeOfferSection.vue';
   import BenefitsSection from '@/components/sections/home/BenefitsSection.vue';
   import PriceSection from '@/components/sections/home/PriceSection.vue';
-
-
+  import FAQSection from '@/components/sections/home/FAQSection.vue';
+  import SubFooter from '@/components/partials/SubFooter.vue';
 
 </script>
 
@@ -22,8 +22,8 @@
       <WhatWeOfferSection />
       <BenefitsSection />
       <PriceSection />
-    
-    
+      <FAQSection />
+      <SubFooter />
     </main>
   <Footer />
 </template>

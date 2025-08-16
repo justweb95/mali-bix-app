@@ -14,6 +14,7 @@
   width: 100%;
   background: var(--Dark, #0D1B2E);
   .sub-hero-title {
+    width: 95%;
     max-width: 908px;
     margin: 0px auto;
     color: var(--White, #FFF);
@@ -21,6 +22,12 @@
     font-size: 40px;
     font-weight: 700;
     line-height: 140%; /* 56px */
+  }
+  @media (max-width: 550px) {
+    padding: 40px 0;
+    .sub-hero-title {
+      font-size: 1.5rem;
+    }
   }
 }
 </style>
