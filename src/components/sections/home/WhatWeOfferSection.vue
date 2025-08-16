@@ -111,7 +111,8 @@
         </ul>
       </div>
       <div class="wwe-image-holder ">
-        <img :src="wwe_image" alt="What We Offer Dynamic Image">
+<img :src="wwe_image ?? ''" alt="What We Offer Dynamic Image">
+
       </div>
     </div>
   </section>
