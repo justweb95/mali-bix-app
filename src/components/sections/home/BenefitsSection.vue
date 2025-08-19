@@ -68,7 +68,7 @@
 <style scoped>
   .benefits {
     padding: 60px 0;
-    background: var(--Dark, #0D1B2E);
+    background: var(--dark, #0C1625);
     .container {
       .label {
         width: fit-content;
@@ -102,7 +102,7 @@
           flex: 1 0 28%;
           padding: 2rem;
           border-radius: 8px;
-          background: var(--Dark-blue, #0E1F34);
+          background: var(--dark-blue, #0E1F34);
           transition: .3s ease-in-out;
           .benefits-card-icon {
             display: block;

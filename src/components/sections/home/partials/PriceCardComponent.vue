@@ -58,7 +58,8 @@
     flex-direction: column;
     padding: 24px;
     border-radius: 8px;
-    background: var(--Dark-blue, #0E1F34);
+    background: var(--dark-blue, #0E1F34);
+    transition: .3s ease-in-out;
     .price-card-label {
       color: var(--Blue---Main-Color, #0084FF);
       font-family: "Red Hat Display";
@@ -73,7 +74,7 @@
         border-radius: 40px;
         background: linear-gradient(180deg, #0AF89D -14.59%, #00D081 102.08%);
         box-shadow: 0 2px 2px 0 #38FF95 inset;
-        color: var(--Dark, #0D1B2E);
+        color: var(--dark, #0C1625);
         text-align: center;
         font-family: "Red Hat Display";
         font-size: 0.75rem;
@@ -137,6 +138,9 @@
       &:hover {
         background: transparent;
       }
+    }
+    &:hover {
+      transform: scale(1.03);
     }
   }
 </style>

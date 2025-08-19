@@ -47,7 +47,7 @@
 <style scoped>
 .price {
   padding: 60px 0;
-  background: var(--Dark, #0D1B2E);
+  background: var(--dark, #0C1625);
   .price-container {
     .label {
       display: block;
@@ -85,11 +85,6 @@
       }
       .price-description {
         font-size: 1rem;
-      }
-      .price-card-holder {
-        .single-price-card {
-
-        }
       }
     }
   }

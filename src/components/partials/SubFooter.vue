@@ -31,7 +31,7 @@
 <style scoped>
   .sub-footer {
     padding: 60px 0;
-    background: var(--Dark, #0D1B2E);
+    background: var(--dark, #0C1625);
     .sub-footer-holder {
       display: flex;
       align-items: center;

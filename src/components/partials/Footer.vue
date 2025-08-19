@@ -72,7 +72,7 @@
 
 <style scoped>
   footer {
-    background: var(--Dark, #0D1B2E);
+    background: var(--dark, #0C1625);
     .footer-holder {
       display: flex;
       flex-wrap: wrap;

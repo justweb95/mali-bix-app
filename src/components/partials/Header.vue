@@ -60,7 +60,7 @@
     position: relative;
     width: 100%;
     padding: 1.5rem 0;
-    background-color: var(--dark, #0d1b2e);
+    background-color: var(--dark, #0C1625);
 
     .nav-list {
       display: flex;
@@ -116,7 +116,7 @@
 
       .header-register {
         padding: 0.9rem 1.5rem;
-        border-radius: 4px;
+        border-radius: 8px;
         border: 1px solid var(--Blue---Main-Color, #0084FF);
         transition: .3s ease;
         &:hover {
@@ -162,7 +162,7 @@
         .dropdown-menu {
           padding: 1.5rem;
           list-style: none;
-          background: var(--Dark-blue, #0E1F34);
+          background: var(--dark-blue, #0E1F34);
           li {
             width: 100%;
             text-align: center;

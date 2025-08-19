@@ -39,7 +39,7 @@
 
     .hero-new-label {
       padding: 3.5px 14px;
-      color: var(--Dark, #0D1B2E);
+      color: var(--dark, #0C1625);
       text-align: center;
       font-family: "Red Hat Display";
       font-size: 1rem;
@@ -97,6 +97,11 @@
     line-height: normal;
     letter-spacing: 0.8px;
     text-decoration: none;
+    transition: .3s ease-in-out;
+    &:hover {
+      transform: scale(1.1);
+      background: #0279E8;
+    }
   }
 
   @media (max-width: 550px) {

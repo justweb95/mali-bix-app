@@ -16,21 +16,21 @@
               <path d="M16 1.50049L2 15.5005" stroke="#FF3344" stroke-width="3"/>
               <path d="M2 1.50049L16 15.5005" stroke="#FF3344" stroke-width="3"/>
             </svg>
-            <span>Nepreglednim interfejsom koji vas usporava..</span>
+            <span>Nepreglednim interfejsom koji vas usporava...</span>
           </li>
           <li>
             <svg width="18" height="17" viewBox="0 0 18 17" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M16 1.50049L2 15.5005" stroke="#FF3344" stroke-width="3"/>
               <path d="M2 1.50049L16 15.5005" stroke="#FF3344" stroke-width="3"/>
             </svg>
-            <span>Alatima koji nisu prilagođeni vašem poslu..</span>
+            <span>Alatima koji nisu prilagođeni vašem poslu...</span>
           </li>
           <li>
             <svg width="18" height="17" viewBox="0 0 18 17" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M16 1.50049L2 15.5005" stroke="#FF3344" stroke-width="3"/>
               <path d="M2 1.50049L16 15.5005" stroke="#FF3344" stroke-width="3"/>
             </svg>
-            <span> Slabom podrškom kada vam je pomoć najpotrebnija...</span>
+            <span> Slabom podrškom kada vam je pomoć najpotrebnija</span>
           </li>
         </ul>
       </article>
@@ -79,7 +79,7 @@
 <style scoped>
   .why-section {
     padding: 60px 0;
-    background: var(--Dark, #0D1B2E);
+    background: var(--dark, #0C1625);
     .why-section-holder {
       padding: 20px;
       display: flex;
@@ -87,14 +87,23 @@
       align-items: stretch;
       gap: 20px;
       border-radius: 12px;
-      background: var(--Dark-blue, #0E1F34);
+      background: var(--dark-blue, #0E1F34);
       
       .why-single-card {
         padding: 40px;
         flex: 1 0 48%;
         border-radius: 4px;
-        background: var(--Dark, #0D1B2E);
+        background: var(--dark, #0C1625);
+        &:first-child {
+          .label {
+            border: 1px solid var(--red, #ff3344);          
+          }
+          .why-card-title {
+            max-width: 500px;
+          }
+        }
         .why-card-title {
+          max-width: 450px;
           margin: 24px 0px;
           font-size: 32px;
           font-weight: 700;
@@ -114,10 +123,13 @@
             display: flex;
             align-items: center;
             gap: 12px;
-
             font-size: 18px;
             font-weight: 700;
             line-height: 150%; /* 27px */
+            span {
+              font-family: "Red Hat Display";
+
+            }
           }
         }
       }

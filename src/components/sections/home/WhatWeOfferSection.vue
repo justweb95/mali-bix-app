@@ -121,7 +121,7 @@
 <style scoped>
   .what-we-offer {
     padding: 60px 0;
-    background: var(--Dark, #0D1B2E);
+    background: var(--dark, #0C1625);
     .what-we-offer-container {
       display: flex;
       align-items: flex-start;
@@ -130,7 +130,7 @@
       .wwe-content-holder {
         flex: 1 0 45%;
         .wwe-title{
-          margin: 2rem 0px;
+          margin: 2rem 0px 3rem;
           color: var(--White, #FFF);
           font-size: 3rem;
           font-weight: 700;
@@ -145,6 +145,7 @@
             max-height: 93px;
             overflow: clip;
             transition: .3s ease-in-out;
+            border-bottom: 1px solid var(--Stroke, #1E2E45);
             .wwe-drop-down-item-heading {
               display: flex;
               align-items: center;
@@ -167,15 +168,15 @@
               line-height: 150%; /* 27px */
             }
           }
-          .professional-support {
-            border-bottom: 0px solid var(--Blue---Main-Color, #0084FF);
+          /* .professional-support {
+            border-bottom: 1px solid var(--Blue---Main-Color, #0084FF);
           }
           .innovative-solutions {
-            border-bottom: 0px solid var(--Green, #0AF89D);
+            border-bottom: 1px solid var(--Green, #0AF89D);
           }
           .customer-satisfaction {
-            border-bottom: 0px solid var(--Purple, #9975FF);
-          }
+            border-bottom: 1px solid var(--Purple, #9975FF);
+          } */
         }
       }
       .wwe-image-holder {
@@ -243,8 +244,20 @@
     }
   }
 
-.wwe-drop-down-item-open {
+.wwe-drop-down-item-open.professional-support {
   max-height: 250px !important;
   border-bottom-width: 2px !important;
+  border-bottom: 1px solid var(--Blue---Main-Color, #0084FF) !important;
 }
+.wwe-drop-down-item-open.innovative-solutions {
+  max-height: 250px !important;
+  border-bottom-width: 2px !important;
+  border-bottom: 1px solid var(--Green, #0AF89D) !important;
+}
+.wwe-drop-down-item-open.customer-satisfaction {
+  max-height: 250px !important;
+  border-bottom-width: 2px !important;
+  border-bottom: 1px solid var(--Purple, #9975FF) !important;
+}
+
 </style>

@@ -18,7 +18,7 @@
 :root {
   --white: #fff;
   --gray-light: #c3d3e8;
-  --dark: #0d1b2e;
+  --dark: #0C1625;
   --blue: #3b82f6;
   --Blue---Main-Color: #0084FF;
   --green: #0af89d;
@@ -46,6 +46,10 @@
   width: 95%;
   max-width: 1280px;
   margin: 0 auto;
+  @media (max-width: 550px) {
+    width: 90%;
+    
+  }
 }
 
 h1 {

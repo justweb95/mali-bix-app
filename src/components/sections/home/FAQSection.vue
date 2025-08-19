@@ -71,7 +71,7 @@
 <style scoped>
   .faq {
     padding: 60px 0;
-    background: var(--Dark, #0D1B2E);
+    background: var(--dark, #0C1625);
     .container {
       .label {
         display: block;
@@ -95,6 +95,8 @@
       }
 
       .faq-list-holder {
+        margin: 0px auto;
+        max-width: 850px;
         margin-top: 60px;
         list-style: none;
         .faq-item {
@@ -109,7 +111,7 @@
           overflow: hidden;
           transition: .3s ease-in-out;
 
-          .faq-title {
+          .faq-question {
             color: var(--white, #FFF);
             font-family: "Red Hat Display";
             font-size: 1.25rem;
@@ -140,7 +142,7 @@
           max-height: 200px !important;
           border-radius: 8px;
           border: 1px solid var(--Blue---Main-Color, #0084FF);
-          background: var(--Dark-blue, #0E1F34);
+          background: var(--dark-blue, #0E1F34);
           .faq-icon {
             transform: rotate(135deg);
             path {

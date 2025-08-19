@@ -11,17 +11,17 @@ import logo5 from '@images/home/klijent-5.svg'
     <p class="carousel-text-info">Preduzeća koja su nam ukazala poverenje:</p>
     <div class="hero-carousel-holder">
       <!-- Original logos -->
-      <img :src="logo1" alt="Logo 1" />
-      <img :src="logo2" alt="Logo 2" />
-      <img :src="logo3" alt="Logo 3" />
-      <img :src="logo4" alt="Logo 4" />
-      <img :src="logo5" alt="Logo 5" />
+      <img :src="logo1" alt="Logo 1" loading="lazy" />
+      <img :src="logo2" alt="Logo 2" loading="lazy" />
+      <img :src="logo3" alt="Logo 3" loading="lazy" />
+      <img :src="logo4" alt="Logo 4" loading="lazy" />
+      <img :src="logo5" alt="Logo 5" loading="lazy" />
       <!-- Duplicate logos -->
-      <img :src="logo1" alt="Logo 1 duplicate" />
-      <img :src="logo2" alt="Logo 2 duplicate" />
-      <img :src="logo3" alt="Logo 3 duplicate" />
-      <img :src="logo4" alt="Logo 4 duplicate" />
-      <img :src="logo5" alt="Logo 5 duplicate" />
+      <img :src="logo1" alt="Logo 1 duplicate" loading="lazy" />
+      <img :src="logo2" alt="Logo 2 duplicate" loading="lazy" />
+      <img :src="logo3" alt="Logo 3 duplicate" loading="lazy" />
+      <img :src="logo4" alt="Logo 4 duplicate" loading="lazy" />
+      <img :src="logo5" alt="Logo 5 duplicate" loading="lazy" />
     </div>
   </div>
 </template>
