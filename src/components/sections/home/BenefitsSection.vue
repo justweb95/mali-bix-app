@@ -1,7 +1,8 @@
 <script setup>
 import { onMounted, ref } from "vue";
 import LabelComponent from '@/components/sections/home/partials/LabelComponent.vue';
-import animateCharacters from "@/helpers/AnimatedHeadings.js";
+import animateCharacters from "@/helpers/AnimatedHeadings";
+
 
 const headingRef = ref(null);
 

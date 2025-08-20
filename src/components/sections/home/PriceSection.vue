@@ -3,7 +3,8 @@ import { onMounted, ref } from "vue";
   import LabelComponent from '@/components/sections/home/partials/LabelComponent.vue';
   import PriceCardComponent from '@/components/sections/home/partials/PriceCardComponent.vue';
 
-  import animateCharacters from "@/helpers/AnimatedHeadings.js";
+import animateCharacters from "@/helpers/AnimatedHeadings";
+
 
   const headingRef = ref(null);
 

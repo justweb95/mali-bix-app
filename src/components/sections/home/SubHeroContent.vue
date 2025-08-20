@@ -1,6 +1,7 @@
 <script setup>
 import { onMounted, ref } from "vue";
-import animateCharacters from "@/helpers/AnimatedHeadings.js";
+import animateCharacters from "@/helpers/AnimatedHeadings";
+
 
 const container = ref(null);
 
