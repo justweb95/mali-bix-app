@@ -1,80 +1,70 @@
-<script setup lang="ts">
-  import { onMounted, ref, nextTick  } from "vue";
-  import LabelComponent from '@/components/sections/home/partials/LabelComponent.vue';
-  // @ts-ignore
-  import animateCharacters from "@/helpers/AnimatedHeadings";
+<script setup>
+import { onMounted, ref, nextTick } from "vue";
+import LabelComponent from '@/components/sections/home/partials/LabelComponent.vue';
+// @ts-ignore
+import animateCharacters from "@/helpers/AnimatedHeadings";
 
-  const activeFAQ = ref<number | null>(null);
-  const headingRef = ref<HTMLHeadingElement | null>(null);
+const activeFAQ = ref(null);
+const headingRef = ref(null);
 
+function toggleFAQ(index) {
+  activeFAQ.value = activeFAQ.value === index ? null : index;
+}
 
-  interface FAQ {
-    question: string;
-    answer: string;
+const faqs = ref([
+  {
+    question: "Da li mogu da isprobam aplikaciju pre plaćanja?",
+    answer: "Naravno! Nudimo besplatan probni period od 10 dana bez potrebe za unosom kartice."
+  },
+  {
+    question: "Da li je aplikacija fiskalno usklađena sa zakonima u Srbiji?",
+    answer: "Da, MaliBizApp podržava elektronsku fiskalizaciju u skladu sa propisima Poreske uprave Republike Srbije."
+  },
+  {
+    question: "Na kojim uređajima mogu koristiti aplikaciju?",
+    answer: "Aplikacija radi na Android i iOS telefonima, kao i na računaru putem web preglednika."
+  },
+  {
+    question: "Kako funkcionišu SMS poruke?",
+    answer: "Možete automatski slati podsetnike za termine klijentima. U paketu imate određeni broj poruka, a dodatne se naplaćuju po potrebi."
+  },
+  {
+    question: "Da li mogu da šaljem fiskalne račune direktno iz aplikacije?",
+    answer: "Da, izdavanje i slanje fiskalnih računa je potpuno integrisano u aplikaciju i moguće je direktno iz nje."
+  },
+  {
+    question: "Šta se dešava ako ne produžim pretplatu?",
+    answer: "Vaš nalog ostaje sačuvan, ali nećete moći da koristite napredne funkcije dok ponovo ne aktivirate pretplatu."
   }
+]);
 
-  function toggleFAQ(index: number) {
-    activeFAQ.value = activeFAQ.value === index ? null : index;
-  }
+onMounted(() => {
+  const h3 = headingRef.value;
+  if (!h3) return;
 
-  const faqs = ref<FAQ[]>([
-    {
-      question: "Da li mogu da isprobam aplikaciju pre plaćanja?",
-      answer: "Naravno! Nudimo besplatan probni period od 10 dana bez potrebe za unosom kartice."
-    },
-    {
-      question: "Da li je aplikacija fiskalno usklađena sa zakonima u Srbiji?",
-      answer: "Da, MaliBizApp podržava elektronsku fiskalizaciju u skladu sa propisima Poreske uprave Republike Srbije."
-    },
-    {
-      question: "Na kojim uređajima mogu koristiti aplikaciju?",
-      answer: "Aplikacija radi na Android i iOS telefonima, kao i na računaru putem web preglednika."
-    },
-    {
-      question: "Kako funkcionišu SMS poruke?",
-      answer: "Možete automatski slati podsetnike za termine klijentima. U paketu imate određeni broj poruka, a dodatne se naplaćuju po potrebi."
-    },
-    {
-      question: "Da li mogu da šaljem fiskalne račune direktno iz aplikacije?",
-      answer: "Da, izdavanje i slanje fiskalnih računa je potpuno integrisano u aplikaciju i moguće je direktno iz nje."
-    },
-    {
-      question: "Šta se dešava ako ne produžim pretplatu?",
-      answer: "Vaš nalog ostaje sačuvan, ali nećete moći da koristite napredne funkcije dok ponovo ne aktivirate pretplatu."
-    }
-  ]);
-
-  onMounted(() => {
-    const h3 = headingRef.value;
-    if (!h3) return;
-
-    const observer = new IntersectionObserver(
-      (entries, obs) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            animateCharacters(h3);
-            obs.unobserve(h3);
-          }
-        });
-      },
-      {
-        threshold: 0.1,
+  const observer = new IntersectionObserver((entries, obs) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        animateCharacters(h3);
+        obs.unobserve(h3);
       }
-    );
-    observer.observe(h3);
-    
+    });
+  }, { threshold: 0.1 });
+
+  observer.observe(h3);
+
   nextTick(() => {
-    const faqItems = document.querySelectorAll<HTMLElement>('.faq-item');
+    const faqItems = document.querySelectorAll('.faq-item');
 
     faqItems.forEach((item) => {
-      const question = item.querySelector<HTMLElement>('.faq-question');
+      const question = item.querySelector('.faq-question');
       if (!question) return;
 
       const questionHeight = question.offsetHeight + 42; // extra space if needed
       item.style.maxHeight = `${questionHeight}px`;
     });
   });
-  });
+});
 </script>
 
 <template>
