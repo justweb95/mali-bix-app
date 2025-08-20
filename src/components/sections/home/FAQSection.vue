@@ -1,7 +1,6 @@
 <script setup>
 import { onMounted, ref, nextTick } from "vue";
 import LabelComponent from '@/components/sections/home/partials/LabelComponent.vue';
-// @ts-ignore
 import animateCharacters from "@/helpers/AnimatedHeadings";
 
 const activeFAQ = ref(null);
