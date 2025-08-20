@@ -1,14 +1,36 @@
 <script setup>
-  import LabelComponent from '@/components/sections/home/partials/LabelComponent.vue';
+import { onMounted, ref } from "vue";
+import LabelComponent from '@/components/sections/home/partials/LabelComponent.vue';
+import animateCharacters from "@/helpers/AnimatedHeadings.js";
 
+const headingRef = ref(null);
 
+onMounted(() => {
+  const h3 = headingRef.value;
+  if (!h3) return;
+
+  const observer = new IntersectionObserver(
+    (entries, obs) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          animateCharacters(h3);
+          obs.unobserve(h3);
+        }
+      });
+    },
+    {
+      threshold: 0.1,
+    }
+  );
+  observer.observe(h3);
+});
 </script>
 
 <template>
   <section id="benefiti" class="benefits">
-    <div class="benefits-container container">
+    <div  class="benefits-container container">
       <LabelComponent label="Benefiti" />
-      <h3 class="benefits-title">Zašto izabrati MaliBizApp?</h3>
+      <h3 ref="headingRef" class="benefits-title">Zašto izabrati MaliBizApp?</h3>
       <p class="benefits-text">Uz našu aplikaciju, vaše poslovanje postaje jednostavnije, brže i profesionalnije — bez dodatnog opterećenja.</p>
       <ul class="benefits-card-list">
         <li class="benefits-card">
@@ -81,6 +103,25 @@
         font-size: 3rem;
         font-weight: 700;
         line-height: 120%; /* 57.6px */
+        &:deep(span.char) {
+          display: inline-block;
+          opacity: 0;
+          transform: translateY(7px);
+          filter: blur(4px);
+          transition: opacity .4s ease, transform .4s ease, filter .4s ease;
+          will-change: opacity, transform, filter;
+        }
+
+        &:deep(span.char.visible) {
+          opacity: 1;
+          transform: translateY(0);
+          filter: blur(0);
+        }
+
+        &:deep(span.word) {
+          display: inline-block;
+          white-space: nowrap;
+        }
       }
       .benefits-text {
         color: var(--Text, #C3D3E8);
@@ -104,6 +145,13 @@
           border-radius: 8px;
           background: var(--dark-blue, #0E1F34);
           transition: .3s ease-in-out;
+
+          opacity: 0;
+          transform: translateY(400px);
+          animation: slideUpFade 0.6s forwards;
+          animation-timeline: view(550px 10px);
+          animation-delay: 0.1s;
+         
           .benefits-card-icon {
             display: block;
             width: max-content;
@@ -165,5 +213,28 @@
         }
       }
     }
+  }
+
+  @keyframes slideUpFade {
+  0% {
+    opacity: 0;
+    transform: translateY(60px);
+  }
+  20% {
+    opacity: 0.3;
+    transform: translateY(30px);
+  }
+  50% {
+    opacity: 0.7;
+    transform: translateY(10px); /* slight overshoot for punch */
+  }
+  80% {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
   }
 </style>

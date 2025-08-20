@@ -1,8 +1,12 @@
 <script setup lang="ts">
-  import { ref } from 'vue';
+  import { onMounted, ref, nextTick  } from "vue";
   import LabelComponent from '@/components/sections/home/partials/LabelComponent.vue';
+  import animateCharacters from "@/helpers/AnimatedHeadings.js";
 
   const activeFAQ = ref<number | null>(null);
+  const headingRef = ref<HTMLHeadingElement | null>(null);
+
+
   interface FAQ {
     question: string;
     answer: string;
@@ -38,13 +42,45 @@
       answer: "Vaš nalog ostaje sačuvan, ali nećete moći da koristite napredne funkcije dok ponovo ne aktivirate pretplatu."
     }
   ]);
+
+  onMounted(() => {
+    const h3 = headingRef.value;
+    if (!h3) return;
+
+    const observer = new IntersectionObserver(
+      (entries, obs) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            animateCharacters(h3);
+            obs.unobserve(h3);
+          }
+        });
+      },
+      {
+        threshold: 0.1,
+      }
+    );
+    observer.observe(h3);
+    
+  nextTick(() => {
+    const faqItems = document.querySelectorAll<HTMLElement>('.faq-item');
+
+    faqItems.forEach((item) => {
+      const question = item.querySelector<HTMLElement>('.faq-question');
+      if (!question) return;
+
+      const questionHeight = question.offsetHeight + 42; // extra space if needed
+      item.style.maxHeight = `${questionHeight}px`;
+    });
+  });
+  });
 </script>
 
 <template>
   <section id="cesta-pitanja" class="faq">
     <div class="container">
       <LabelComponent label="FAQ" />
-      <h3 class="faq-title">Često postavljana pitanja</h3>
+      <h3 ref="headingRef" class="faq-title">Često postavljana pitanja</h3>
       <p class="faq-description">Pronađite odgovore na uobičajena pitanja u nastavku</p>
       
       <ul class="faq-list-holder">
@@ -84,6 +120,25 @@
         font-size: 3rem;
         font-weight: 700;
         line-height: 140%; /* 67.2px */
+        &:deep(span.char) {
+          display: inline-block;
+          opacity: 0;
+          transform: translateY(7px);
+          filter: blur(4px);
+          transition: opacity .4s ease, transform .4s ease, filter .4s ease;
+          will-change: opacity, transform, filter;
+        }
+
+        &:deep(span.char.visible) {
+          opacity: 1;
+          transform: translateY(0);
+          filter: blur(0);
+        }
+
+        &:deep(span.word) {
+          display: inline-block;
+          white-space: nowrap;
+        }
       }
       .faq-description {
         color: var(--Text, #C3D3E8);
@@ -139,7 +194,7 @@
           }
         }
         .faq-active-item {
-          max-height: 200px !important;
+          max-height: 350px !important;
           border-radius: 8px;
           border: 1px solid var(--Blue---Main-Color, #0084FF);
           background: var(--dark-blue, #0E1F34);
@@ -163,44 +218,6 @@
         }
         .faq-list-holder {
           margin-top: 32px;
-          .faq-item {
-            &:nth-of-type(2), &:nth-of-type(5) {
-              max-height: 85px;
-              .faq-icon {
-                top: 30px;
-              }
-            }
-          }
-        }
-      }  
-    }
-    @media (max-width: 500px) {
-      .container {
-        .faq-list-holder {
-          .faq-item {
-            &:nth-of-type(1),
-            &:nth-of-type(2),
-            &:nth-of-type(3),
-            &:nth-of-type(5),
-            &:nth-of-type(6) {
-              max-height: 85px;
-              .faq-icon {
-                top: 30px;
-              }
-            }
-          }
-        }
-      }  
-    }
-    @media (max-width: 375px) {
-      .container {
-        .faq-list-holder {
-          .faq-item {
-            max-height: 85px;
-            .faq-icon {
-              top: 30px;
-            }
-          }
         }
       }  
     }

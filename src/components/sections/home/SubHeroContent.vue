@@ -1,107 +1,82 @@
 <script setup>
-import { ref, onMounted } from 'vue'
-import Typed from 'typed.js'
+import { onMounted, ref } from "vue";
+import animateCharacters from "@/helpers/AnimatedHeadings.js";
 
-const el = ref(null)
-const container = ref(null)
+const container = ref(null);
 
 onMounted(() => {
+  const h2 = container.value.querySelector("h2");
+  if (!h2) return;
+
   const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
+    (entries, obs) => {
+      entries.forEach(entry => {
         if (entry.isIntersecting) {
-          const fullText =
-            "Zašto da se zadovoljavate prosečnim kad možete imati alat koji raste zajedno sa vašim poslovanjem?";
-
-          // split last char
-          const mainText = fullText.slice(0, -1);
-          const lastChar = fullText.slice(-1);
-
-          new Typed(el.value, {
-            strings: [mainText],
-            typeSpeed: 30,
-            showCursor: false,
-            loop: false,
-            onComplete: () => {
-              const span = document.createElement("span");
-              span.classList.add("last-char");
-              span.textContent = lastChar;
-              el.value.appendChild(span);
-
-              // trigger animation
-              setTimeout(() => {
-                span.classList.add("animate-last-char");
-              }, 50);
-            },
-          });
-
-          observer.disconnect();
+          animateCharacters(h2);
+          obs.unobserve(h2); 
         }
       });
     },
-    { threshold: 0.3 }
+    {
+      threshold: 0.1,
+    }
   );
 
-  if (container.value) observer.observe(container.value);
+  observer.observe(h2);
 });
 </script>
 
 <template>
   <section ref="container" class="sub-hero-container">
-    <h2 class="sub-hero-title">
-      <span ref="el"></span>
+    <h2 class="sub-hero-title"
+      aria-label="Zašto da se zadovoljavate prosečnim kad možete imati alat koji raste zajedno sa vašim poslovanjem?">
+      Zašto da se zadovoljavate prosečnim kad možete imati alat koji raste zajedno sa vašim poslovanjem?
     </h2>
   </section>
 </template>
 
-
 <style scoped>
 .sub-hero-container {
-  padding: 60px 0px;
+  padding: 60px 0;
   width: 100%;
   background: var(--dark, #0C1625);
-  .sub-hero-title {
-    width: 95%;
-    max-width: 908px;
-    margin: 0px auto;
-    color: var(--White, #FFF);
-    text-align: center;
-    font-size: 40px;
-    font-weight: 700;
-    line-height: 140%; /* 56px */
-  }
-  @media (max-width: 550px) {
-    padding: 40px 0;
-    .sub-hero-title {
-      font-size: 1.5rem;
-    }
-  }
 }
 
+.sub-hero-title {
+  width: 95%;
+  max-width: 908px;
+  margin: 0 auto;
+  color: var(--White, #FFF);
+  text-align: center;
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 140%;
+}
 
-/* initial state of the last char */
-.last-char {
+/* use :deep() so scoped styles apply to dynamically-created spans */
+.sub-hero-title :deep(span.char) {
   display: inline-block;
-  filter: blur(4px);
   opacity: 0;
-  transform: translateY(20px);
+  transform: translateY(7px);
+  filter: blur(4px);
+  transition: opacity .4s ease, transform .4s ease, filter .4s ease;
+  will-change: opacity, transform, filter;
 }
 
-/* animation for last char */
-.animate-last-char {
-  animation: dropIn 0.6s ease forwards;
+.sub-hero-title :deep(span.char.visible) {
+  opacity: 1;
+  transform: translateY(0);
+  filter: blur(0);
 }
 
-@keyframes dropIn {
-  0% {
-    filter: blur(4px);
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  100% {
-    filter: blur(0);
-    opacity: 1;
-    transform: translateY(0);
-  }
+.sub-hero-title  :deep(span.word) {
+  display: inline-block;
+  white-space: nowrap; /* keep letters of a word together */
+}
+
+@media (max-width: 550px) {
+  .sub-hero-container { padding: 40px 0; }
+  .sub-hero-title { font-size: 1.5rem; }
 }
 </style>
+

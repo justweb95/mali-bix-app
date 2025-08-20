@@ -1,6 +1,31 @@
 <script setup>
+import { onMounted, ref } from "vue";
   import LabelComponent from '@/components/sections/home/partials/LabelComponent.vue';
   import PriceCardComponent from '@/components/sections/home/partials/PriceCardComponent.vue';
+
+  import animateCharacters from "@/helpers/AnimatedHeadings.js";
+
+  const headingRef = ref(null);
+
+  onMounted(() => {
+    const h3 = headingRef.value;
+    if (!h3) return;
+
+    const observer = new IntersectionObserver(
+      (entries, obs) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            animateCharacters(h3);
+            obs.unobserve(h3);
+          }
+        });
+      },
+      {
+        threshold: 0.1,
+      }
+    );
+    observer.observe(h3);
+  });
 
 </script>
 
@@ -8,7 +33,7 @@
   <section id="cenovnik" class="price">
     <div class="price-container container">
       <LabelComponent label="Cenovnik" />
-      <h3 class="price-title">Paketi i cene prilagođeni svakom biznisu!</h3>
+      <h3 ref="headingRef" class="price-title">Paketi i cene prilagođeni svakom biznisu!</h3>
       <p class="price-description">Fleksibilni planovi dizajnirani da odgovaraju vašim poslovnim ciljevima.</p>
       <div class="price-card-holder">
         <PriceCardComponent
@@ -60,6 +85,25 @@
       font-size: 3rem;
       font-weight: 700;
       line-height: 120%; /* 57.6px */
+      &:deep(span.char) {
+        display: inline-block;
+        opacity: 0;
+        transform: translateY(7px);
+        filter: blur(4px);
+        transition: opacity .4s ease, transform .4s ease, filter .4s ease;
+        will-change: opacity, transform, filter;
+      }
+
+      &:deep(span.char.visible) {
+        opacity: 1;
+        transform: translateY(0);
+        filter: blur(0);
+      }
+
+      &:deep(span.word) {
+        display: inline-block;
+        white-space: nowrap;
+      }
     }
     .price-description {
       color: var(--Text, #C3D3E8);
